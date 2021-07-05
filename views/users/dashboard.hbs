@@ -15,8 +15,9 @@
                 <th scope="col"><strong>Delete</strong></th>
             </tr>
         </thead>
-        <tbody>
+       
             {{#each blog}}
+             <tbody>
                 <td><a href="/blogs/{{_id}}">{{title}}</a></td>
                 <td>{{status}}</td>
                 <td>{{formatDate createdAt "dd/MM/yy"}}</td>
@@ -24,8 +25,9 @@
                 <form action="/blogs/{{_id}}?_method=DELETE" method="POST">
                     <td><button class="btn"><i class="fas fa-trash-alt"></i></button></td>
                 </form>
+              </tbody>
             {{/each}}
-        </tbody>
+     
       </table>  
   </div>
   </div>

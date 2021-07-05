@@ -11,7 +11,7 @@ const { getBlogsDoc, generateCommentDoc } = require('../helpers/docGenerate');
 //all blogs controller
 const blogsController = async (req, res, next) => {
   try {
-    const allBlogs = await Blog.find();
+    const allBlogs = await Blog.find({ status: 'public' });
     const context = {
       blogsDocuments: allBlogs.map((blog) => getBlogsDoc(blog)),
     };

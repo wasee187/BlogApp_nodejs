@@ -82,10 +82,11 @@ const getUserBlogsController = async (req, res) => {
 
     if (user) {
       const blogDoc = user.blogs.map((blog) => getBlogsDoc(blog));
+      const publicBlog = blogDoc.filter((blog) => blog.status === 'public');
       res.render('blogs/index', {
         title: `All Blogs by ${user.firstName}`,
         firstName: user.firstName,
-        blogs: blogDoc,
+        blogs: publicBlog,
         userBlog: true,
       });
     } else {
