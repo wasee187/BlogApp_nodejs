@@ -1,0 +1,27 @@
+<div class='container'>
+  {{#if userBlog}}
+    {{#each blogs}}
+      <h3 class='text-center'>All Blogs by {{firstName}}</h3>
+      <div class='card'>
+        <div class='card-body'>
+          <h5 class='card-title'>{{title}}</h5>
+          <div class='card-text'>{{{truncateContent description 60}}}</div>
+          <a href='/blogs/{{_id}}' class='btn btn-primary mt-4'>Read More</a>
+        </div>
+      </div>
+
+    {{/each}}
+  {{else}}
+    {{#each blogs}}
+
+      <div class='card'>
+        <div class='card-body'>
+          <h5 class='card-title'>{{title}}</h5>
+          <div class='card-text'>{{{truncateContent description 60}}}</div>
+          <a href='/blogs/{{_id}}' class='btn btn-primary mt-4'>Read More</a>
+        </div>
+      </div>
+
+    {{/each}}
+  {{/if}}
+</div>

@@ -1,0 +1,23 @@
+<div class='container-fluid'>
+  <div class='row'>
+    <div class='col-lg-3 col-md-4 col-sm-6 col-xm-12 my-3'>
+      {{>_userDashboard}}
+    </div>
+    <div class="col-lg-9 col-md-8 col-sm-6 col-xm-12 my-3">
+        <h4 class="text-center"><strong>Your Profile</strong></h4>
+      <ul class="list-unstyled profile mt-3">
+          <li><strong class="text-muted">Profile Picture: </strong>Please edit profile to add image </li>
+          <li><strong class="text-muted">First Name: </strong>   {{user.firstName}}</li>
+          <li><strong class="text-muted">Last Name: </strong>   {{user.lastName}}</li>
+          <li><strong class="text-muted">Email: </strong>          {{user.email}}</li>
+          <li><strong class="text-muted">Password: </strong><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></li>
+      </ul>
+      <div class="d-flex justify-content-around">
+          <a href="/users/me/edit" class="btn btn-info">Edit Profile</a>
+          <form action="/users/me?_method=DELETE" method="POST">
+              <button class="btn btn-danger">Delete Profile</button>
+          </form>
+      </div>
+  </div>
+  </div>
+</div>

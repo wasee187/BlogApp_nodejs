@@ -1,0 +1,26 @@
+<div class='container'>
+  <div class='edit-comment-form'>
+    <div class='card mt-2'>
+      <div class='card-header'>
+        <h4 class='card-text'>Edit comment on "{{blog.title}}"</h4>
+      </div>
+      <div class='card-body'>
+        <form
+          action='/blogs/{{blog._id}}/comments/{{comment._id}}/update?_method=PUT'
+          method='POST'
+        >
+          <textarea
+            name='text'
+            id='text'
+            class='form-control'
+          >{{comment.text}}</textarea>
+          <input
+            type='submit'
+            class='btn btn-primary btn-block mt-2'
+            value='Update Comment'
+          />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

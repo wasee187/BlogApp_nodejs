@@ -1,0 +1,86 @@
+<div class='container'>
+  <div class='card'>
+    <div class='card-body'>
+      <h5 class='card-title'>{{blog.title}}</h5>
+      <div class='card-text mb-3'>{{{blog.description}}}</div>
+
+      <div class="d-flex justify-content-lg-between justify-content-md-between justify-content-sm-start">
+        <div class="mt-2 mb-3">
+          <em><small class="text-muted">Tags: </small></em>
+          {{#each blog.tags}}
+            <span class="badge bg-info">{{this}}</span>
+          {{/each}}
+        </div>
+        <div class='mx-3'>
+          <small>Arthur: <strong><a href="/users/{{blog.user.id}}/blogs">{{checkArthur blog.user.id user_id blog.user.firstName blog.user.lastName}}</a></strong></small>
+          <br>
+          <small>Date: {{formatDate blog.createdAt 'dd/MM/yy'}}</small>
+        </div>
+      </div>
+    
+      {{#if user}}
+      <div style="display: {{compareValues blog.user.id user_id 'btn'}};">
+        <a
+          href='/blogs/{{blog._id}}/edit'
+          class='btn btn-primary float-left mr-2'
+        >Edit Post</a>
+        <form action='/blogs/{{blog._id}}?_method=DELETE' method='POST'>
+          <button class='btn btn-danger btn small'>Delete Post</button>
+        </form>
+      </div>
+      {{else}}
+      {{/if}}
+  
+    </div>
+  </div>
+  {{#if user}}
+    {{#if blog.allowComments}}
+      <div class='card'>
+        <div class='card-body'>
+          {{#each blog.comments}}
+          <div class="d-flex justify-content-lg-between justify-content-md-between justify-content-sm-start">
+            <div>
+              <p class='card-text mx-2'><strong style="color:rgb(41, 96, 212);">{{user.firstName}} {{user.lastName}}</strong> {{text}}</p>
+            </div>
+            <div>
+              <small class="mx-2">~{{formatDate createdAt 'dd/MM/yy'}}</small>
+            </div>
+          </div>
+          <div style="display: {{compareValues user.id ../user_id 'btn'}};">
+            <div class="d-flex align-items-start">
+              <a href="/blogs/{{../blog._id}}/comments/{{_id}}/edit" class="btn btn-outline-primary"><small>Edit</small></a>
+            <form action="/blogs/{{../blog._id}}/comments/{{_id}}?_method=DELETE" method="POST">
+              <button class="btn btn-outline-danger"><small>Delete</small></button>
+            </form>
+            </div>
+          </div>
+          <hr>
+        {{else}}
+            <p class="card-text text-muted">No Comments</p>
+        {{/each}}
+          <form action='/blogs/{{blog._id}}/comments' method='POST'>
+            <input
+              type='text'
+              name='text'
+              class='commentBox form-control mt-2'
+              placeholder='Add comments...'
+            />
+          </form>
+        </div>
+      </div>
+    {{else}}
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-text text-center text-muted">Comment is turned off</h4>
+        </div>
+      </div>
+    {{/if}}
+
+  {{else}}
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-text text-center text-muted">Please <a href="/auth/login">Login</a> to add or view comment</h5>
+      </div>
+    </div>
+  {{/if}}
+</div>

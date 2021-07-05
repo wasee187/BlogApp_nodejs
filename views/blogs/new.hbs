@@ -1,0 +1,46 @@
+<div class="container p-4">
+    <form action="/blogs" method="POST">
+    <div class="form-group">
+        <label for="title">Blog Title :</label>
+        <input type="text" class="form-control" id="title" name="title"
+        {{#if blog.title}}
+        value={{blog.title}}
+        {{/if}}
+        >
+    </div>
+     <div class="form-group">
+        <label for="description">Blog Description : </label>
+        <textarea class="form-control" id="description" rows="5" name="description">
+        {{#if blog.description}}
+        {{blog.description}}
+        {{/if}}
+        </textarea>
+    </div>
+    <div class="form-group">
+        <label for="Status">Status : </label>
+        <select id="status" name="status">
+            <option value="public" {{compareValues "public" blog.status}}>Public</option>
+            <option value="private" {{compareValues "private" blog.status}}>Private</option>
+        </select>
+    </div>
+
+      <div class="form-group">
+        <label for="tags">Tags : </label>
+        <input type="tags" class="form-control" id="tags" name="tags" data-role='tagsinput'
+        {{#if blog.tags}}
+        {{blog.tags}}
+        {{/if}}
+        >
+    </div>
+     <div class="form-check pb-2">
+          <input class="form-check-input" id="allowComments" type="checkbox" name="allowComments" 
+        {{#if blog.allowComments}}
+         checked='true'
+        {{/if}}
+          >
+        <label for="allowComments" class="form-check-label">Allow Comments</label>
+    </div>
+    <button disabled style="display: none;" type="submit">Add New Blog</button>
+    <button type="submit" class="btn btn-primary">Add New Blog</button>
+</form>   
+</div>

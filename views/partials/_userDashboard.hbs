@@ -1,0 +1,18 @@
+<div class='list-group'>
+  <a
+    href='/users/me/blogs'
+    class='list-group-item list-group-item-action
+      {{compareValues '/users/me/blogs' path 'path'}}'
+  >
+    All Ideas
+  </a>
+  <a
+    href='/users/me'
+    class='list-group-item list-group-item-action
+      {{compareValues '/users/me' path 'path'}}'
+  >Profile</a>
+  <a
+    href='/auth/logout'
+    class='list-group-item list-group-item-action'
+  >Logout</a>
+</div>
